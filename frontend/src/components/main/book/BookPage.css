@@ -1,0 +1,94 @@
+.book-info-on-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100%; /* Убедитесь, что высота заполняет весь контейнер */
+    display: grid;
+    grid-template-rows: auto auto 1fr auto auto auto;
+    padding: 4rem;
+    color: white;
+    background-color: inherit;
+    background: rgba(0, 0, 0, 0.6);
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.book-info-no-image {
+    display: grid;
+    grid-template-rows: auto auto 1fr auto auto auto;
+    padding: 4rem;
+    width: 100% !important;
+    height: 100%; /* Убедитесь, что высота заполняет весь контейнер */
+    background-color: inherit;
+    color: rgb(255, 255, 255);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border: 2px solid var(--primary-color);
+}
+
+.book-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    background-color: inherit;
+}
+
+.book-preview {
+    position: relative;
+    width: 100% !important;
+    height: 80vh;
+    background-color: inherit;
+    border-radius: 2rem;
+}
+
+.book-cover {
+    width: 100% !important;
+    height: 100%;
+    object-fit: cover;
+    background-color: inherit;
+}
+
+.book-title {
+    grid-row: 1;
+    align-self: start;
+}
+
+.book-description {
+    grid-row: 2;
+    align-self: start;
+}
+
+.authors-title {
+    grid-row: 3;
+    align-self: end;
+}
+
+.book-authors {
+    grid-row: 4;
+    align-self: start;
+}
+
+.author-description {
+    grid-row: 5;
+    align-self: start;
+}
+
+.book-info {
+    width: 100%;
+    grid-row: 6;
+    display: flex;
+    align-self: end;
+    justify-content: flex-end; /* Выровнять элементы по правому краю */
+    /* margin: 0.5rem; */
+    gap: 1rem; /* Добавить промежутки между элементами */
+}
+
+.book-info p {
+    margin: 0; /* Убедитесь, что у элементов <p> нет внешних отступов */
+}
+
+/* .book-info>* {
+    margin: 0 1rem;
+} */

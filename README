@@ -1,0 +1,2 @@
+sudo nginx -c /home/savely/Documents/projects/hostings/books_hosting/nginx.conf // to start nginx server (backend proxy and frontend static file hosting)
+sudo nginx -c /home/savely/Documents/projects/hostings/books_hosting/nginx.conf -g 'daemon off;' // with debug

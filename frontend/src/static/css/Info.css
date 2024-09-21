@@ -1,0 +1,43 @@
+.info {
+    max-width: 1000px;
+    margin-right: fit-content;
+  }
+  
+  .info h2 {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .info h4 {
+    margin-bottom: 1.5rem;
+  }
+  
+  .info p {
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
+  
+  .info ul {
+    margin-bottom: 2.5rem;
+  }
+  
+  .info li {
+    margin-bottom: 0.5rem;
+    margin-left: 1.5rem;
+  }
+  
+  /* New block styles */
+  .contact-block,
+  .social-block {
+    margin-bottom: 2.5rem; /* Space between blocks */
+  }
+  
+  .social-block h4 { 
+    margin-bottom: 1rem; /* Space above social links */
+  }
+
+.info .line {
+    margin: 2rem 0;
+    padding: 0;
+    width: 100%;
+}

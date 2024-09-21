@@ -1,0 +1,148 @@
+
+:root {
+    --primary-color: #4fa6e0;
+    --background-color: #1b1b1b;
+    --text-color: #e0f8f2;
+    --font-family: 'Roboto', sans-serif; 
+    --transition-duration: 0.3s; 
+    --border-radius: 16px;
+    --font-size: 16px; 
+    --font-family: 'Roboto', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    box-sizing: border-box; 
+    font-weight: 700;
+    font-family: var(--font-family);
+}
+
+.App {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    line-height: 1.6;
+}
+
+
+h1 {
+    font-size: 1.8rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.3rem;
+}
+
+h4 {
+    font-size: 1.1rem;
+}
+
+h5 {
+    font-size: 0.9rem;
+}
+
+h6 {
+    font-size: 0.7rem;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color var(--transition-duration) ease;
+}
+
+a:hover {
+    color: lighten(var(--primary-color), 10%);
+}
+
+button, .button {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color var(--transition-duration) ease;
+}
+
+button:hover, .button:hover {
+    background-color: lighten(var(--primary-color), 10%); 
+}
+
+.gradient-bg {
+    background: linear-gradient(to right, #e0b24f, #f5e298);
+    border-radius: var(--border-radius);
+}
+
+input, textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #3a3a3a;
+    border-radius: var(--border-radius);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: 1rem;
+    /* margin-bottom: 1rem; */
+}
+
+input:focus, textarea:focus {
+    outline: 2px solid var(--primary-color);
+}
+
+.border {
+    border: 2px solid var(--primary-color);
+    border-radius: 20px;
+    padding: 1rem 2rem;
+    margin: 2rem 0;
+}
+
+.main-color {
+    color: var(--primary-color);
+}
+
+.text-color {
+    color: var(--text-color);
+}
+
+.close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 1rem 1.5rem !important;
+    cursor: pointer;
+    margin: 0 !important;
+}
+
+.danger-btn {
+    background-color: rgb(230, 99, 59);
+    color: var(--text-color);
+
+    :hover {
+        background-color: inherit;
+    }
+}
+
+.m-1 {
+    margin: 1rem;
+}
+
+.page-page {
+    max-width: 1200px;
+}
+
+.page-page h2 {
+    margin-bottom: 2rem;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-all;
+}

@@ -1,0 +1,153 @@
+.book {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    padding-bottom: 5rem;
+}
+
+.book .close-btn {
+    right: 0 !important;
+    top: 0 !important;
+}
+
+.book_info {
+    position: relative;
+}
+
+.book> div {
+    width: 100% !important;
+    max-width: 1200px !important;
+}
+
+.book_info > * {
+    margin: 1rem 0;
+}
+
+.switch-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 2rem 0;
+}
+
+.switch-button {
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+    width: 100%;
+    margin: 0 !important;
+}
+
+.switch-button.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* .edit_book {
+    margin: 1rem 0;
+} */
+
+.edit_book * {
+    margin-top: 1rem;
+    max-width: 1200px !important;
+}
+
+.edit_book input, .edit_book textarea {
+    width: 100% !important;
+}
+
+.constructor .book_edit h1 {
+    margin-bottom: 1rem;
+    width: 100%;
+    text-align: center;
+}
+
+.constructor .book_edit * {
+    margin-top: 1rem;
+    max-width: 1200px !important;
+}
+
+.constructor .book_info {
+    padding-bottom: 4rem;
+}
+
+.constructor .book_info a {
+    padding: 1rem 3rem;
+    border: 2px solid var(--primary-color);
+    margin: 0 0.5rem;
+    border-radius: var(--border-radius);
+}
+
+.constructor .book_info h2 {
+    margin: 0;
+    margin-bottom: 2rem;
+}
+
+.constructor .book_info .first {
+    margin-left: 0 !important;
+}
+
+.constructor .book_info .last {
+    margin-right: 0 !important;
+}
+
+.constructor .line {
+    margin: 3rem 0 !important;
+}
+
+.book-title * {
+    width: 100% !important;
+    height: auto !important;
+}
+
+.book-btn {
+    display: inline-block; /* Убедитесь, что это правило применено */
+    width: calc(25% - 1rem) !important; /* Убедитесь, что кнопка имеет фиксированную ширину */
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    margin: 0.5rem !important;
+}
+
+.space-between {
+    display: flex;
+    justify-content: space-between !important;
+}
+
+.row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.mr-1 {
+    margin-right: 1rem;
+}
+
+.ml-1 {
+    margin-left: 1rem;
+}
+
+.mt-1 {
+    margin-top: 1rem;
+}
+
+.update-page {
+    width: 100% !important;
+    margin-bottom: 2rem;
+}
+
+.update-page input, .update-page textarea {
+    width: 100% !important;
+    margin: 1rem 0;
+}
+
+.update-page .field-container button {
+    margin: 0 !important;
+}
+
+textarea {
+    min-height: 20rem;
+}

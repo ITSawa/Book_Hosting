@@ -1,0 +1,190 @@
+.welcome {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  text-align: left;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-top: 13rem;
+  padding-bottom: 4rem;
+  border-radius: var(--border-radius);
+}
+
+.welcome h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.welcome p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.features-why-choose {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.feature-section,
+.why-choose-us {
+  /* width: 100%; */
+  padding: 2rem 4rem;
+  background-color: var(--primary-color);
+  border-radius: var(--border-radius);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 20rem !important;
+}
+.why-choose-us {
+  padding-top: fill;
+}
+
+.feature-section {
+  display: grid;
+  grid-template-columns: 2rem 1fr; /* 2rem for icons, rest for text */
+  gap: 1rem;
+  align-items: center;
+  /* text-align: right; */
+}
+
+.feature-section h2 {
+  grid-column: 1 / -1; /* Span the full width */
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.feature-section ul {
+  list-style: none;
+  padding: 0;
+  font-size: 1.1rem;
+  display: contents; /* Ensure that list items participate in grid layout */
+}
+
+.feature-section li {
+  display: grid;
+  grid-template-columns: 2rem 1fr; /* 2rem for icon, rest for text */
+  gap: 1rem;
+  align-items: center;
+  margin: 0.5rem 0;
+}
+
+.feature-section .fa-icon {
+  margin-right: 0; /* Remove margin-right for grid layout */
+}
+
+.why-choose-us {
+  background-color: var(--primary-color);
+}
+
+.why-choose-us h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.why-choose-us p {
+  margin: 0.5rem 0;
+  display: flex;
+  align-items: center;
+}
+
+.why-choose-us .fa-icon {
+  margin-right: 1rem;
+}
+
+.our-mission,
+.testimonials {
+  margin-bottom: 2rem;
+}
+
+.our-mission h2,
+.testimonials h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.our-mission p,
+.testimonials p {
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+}
+
+.our-mission .fa-icon,
+.testimonials .fa-icon {
+  margin-right: 0.5rem;
+}
+
+.testimonial {
+  background-color: #1f1f1f;
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 1rem;
+}
+
+.testimonial p {
+  font-size: 1rem;
+  font-style: italic;
+  display: flex;
+  align-items: center;
+}
+
+.testimonial .fa-icon {
+  margin-right: 0.5rem;
+}
+
+.testimonial h4 {
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+}
+
+.welcome-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.mr-1 {
+  margin-right: 1rem;
+}
+
+.additional-info {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.additional-info h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.additional-info p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.additional-info a {
+  color: var(--link-color);
+  text-decoration: underline;
+}
+
+.additional-info a:hover {
+  text-decoration: none;
+}
+
+.slick-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slider-container .slick-arrow {
+  display: none !important;
+}
+
+.slick-dots {
+  bottom: -30px;
+  color: var(--primary-color);
+}

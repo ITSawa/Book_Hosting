@@ -1,0 +1,54 @@
+.account {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.account .full-line {
+    margin: 2rem;
+    width: calc(100% - 4rem);
+}
+
+.account-info {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    padding-bottom: 3rem;
+    margin-bottom: 1rem;
+    position: relative;
+    /* width: 40rem; */
+}
+
+.account-info h1 {
+    padding-top: 0 !important;
+}
+
+.account-info .constructor {
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+}
+
+.account-info .logout {
+    position: absolute;
+    bottom: 1rem;
+    right: 2rem;
+    opacity: 0.5;
+}
+
+.two-columns {
+    display: flex;
+    gap: 2rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.two-columns>div {
+    padding: 2rem;
+    width: 50%;
+}
+
+.two-columns ul {
+    list-style: none;
+}

@@ -1,0 +1,20 @@
+.page-page-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.column {
+    width: calc(50% - 0.5rem);
+}
+
+.content-item {
+    margin-bottom: 20px;
+}
+
+.content-item img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: var(--border-radius);
+}

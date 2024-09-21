@@ -1,0 +1,33 @@
+.not-found {
+    text-align: center;
+    width: 100%;
+    height: calc(100vh - 10rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .error-code {
+    font-size: 8rem;
+    margin-bottom: 1rem;
+  }
+  
+  .error-message {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .error-message span {
+    /* display: inline-block; */
+    margin: 0 0.5rem;
+    position: relative;
+  }
+  
+  .error-message span:first-child {
+    border-bottom: 2px solid black;
+  }
+  
+  .home-link {
+    font-size: 1.5rem;
+  }
