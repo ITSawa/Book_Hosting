@@ -1,2 +1,96 @@
-sudo nginx -c /home/savely/Documents/projects/hostings/books_hosting/nginx.conf // to start nginx server (backend proxy and frontend static file hosting)
-sudo nginx -c /home/savely/Documents/projects/hostings/books_hosting/nginx.conf -g 'daemon off;' // with debug
+README
+Overview
+This project sets up an Nginx server to host static files and proxy requests to a Docker container running the backend. The backend is launched using Docker Compose, which also starts up PostgreSQL and the backend service.
+
+Prerequisites
+Docker
+Docker Compose
+Nginx
+Installation and Setup
+Step 1: Clone the Repository
+bash
+Копировать код
+git clone <repository-url>
+cd <repository-directory>
+Step 2: Build and Run the Docker Containers
+To build and run the Docker containers, use the following command:
+
+bash
+Копировать код
+docker-compose up --build
+--build is required the first time you run the containers or if you make changes to the Dockerfile.
+Step 3: Configure Nginx
+Ensure that Nginx is properly configured to serve static files from the build directory and proxy API requests to the backend. Here is a sample Nginx configuration:
+
+nginx
+Копировать код
+server {
+    listen 80;
+
+    server_name yourdomain.com;
+
+    location / {
+        root /path/to/your/build;
+        try_files $uri /index.html;
+    }
+
+    location /api/ {
+        proxy_pass http://backend:5000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+Make sure to replace /path/to/your/build with the actual path to your build directory.
+
+Step 4: Start Nginx
+Start or reload the Nginx server to apply the new configuration:
+
+bash
+Копировать код
+sudo service nginx start
+# or
+sudo service nginx reload
+Usage
+Once everything is set up, you can access the frontend by navigating to your server's address (e.g., http://yourdomain.com). The backend can be accessed through the /api/ endpoint (e.g., http://yourdomain.com/api/).
+
+Docker Compose Configuration
+Here is a sample docker-compose.yml file:
+
+yaml
+Копировать код
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    environment:
+      POSTGRES_USER: youruser
+      POSTGRES_PASSWORD: yourpassword
+      POSTGRES_DB: yourdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    container_name: backend
+    environment:
+      DATABASE_URL: postgres://youruser:yourpassword@postgres:5432/yourdb
+    ports:
+      - "5000:5000"
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:
+Notes
+Make sure to replace placeholders (e.g., youruser, yourpassword, yourdb) with actual values.
+Ensure that the backend service in Docker Compose is configured to connect to the PostgreSQL container using the correct environment variables.
+Conclusion
+This project sets up an Nginx server to serve static files and proxy API requests to a backend running in Docker. The backend and PostgreSQL database are managed using Docker Compose. Follow the steps above to get started with the setup and configuration.
+
+For any issues or contributions, please refer to the [repository's issue tracker](<repository-url>/issues).
