@@ -23,7 +23,6 @@ Step 3: Configure Nginx
 Ensure that Nginx is properly configured to serve static files from the build directory and proxy API requests to the backend. Here is a sample Nginx configuration:
 
 nginx
-Копировать код
 server {
     listen 80;
 
@@ -59,7 +58,6 @@ Docker Compose Configuration
 Here is a sample docker-compose.yml file:
 
 yaml
-Копировать код
 version: '3.8'
 
 services:
