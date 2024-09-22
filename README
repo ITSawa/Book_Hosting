@@ -1,2 +1,155 @@
-sudo nginx -c /home/savely/Documents/projects/hostings/books_hosting/nginx.conf // to start nginx server (backend proxy and frontend static file hosting)
-sudo nginx -c /home/savely/Documents/projects/hostings/books_hosting/nginx.conf -g 'daemon off;' // with debug
+README
+Overview
+This project sets up an Nginx server to host static files and proxy requests to a Docker container running the backend. The backend is launched using Docker Compose, which also starts up PostgreSQL and the backend service.
+
+Prerequisites
+Docker
+Docker Compose
+Nginx
+Installation and Setup
+Step 1: Clone the Repository
+bash
+ 
+git clone <repository-url>
+cd <repository-directory>
+Step 2: Create a .env File
+Create a .env file in the root directory of backend, filling in the placeholder values:
+
+.env
+
+ACCESS_SECRET=''
+REFRESH_SECRET=''
+COOKIE_SIGN=''
+
+PG_LOGIN=''
+PG_PASS=''
+PG_HOST=''
+PG_PORT=''
+PG_NAME=''
+
+
+Step 3: Build and Run the Docker Containers
+To build and run the Docker containers, use the following command:
+
+bash
+ 
+docker-compose up --build
+--build is required the first time you run the containers or if you make changes to the Dockerfile.
+Step 4: Configure Nginx
+Ensure that Nginx is properly configured to serve static files from the build directory and proxy API requests to the backend. Here is the Nginx configuration:
+
+nginx
+ 
+user www-data;
+worker_processes auto;
+pid /run/nginx.pid;
+
+events {
+    worker_connections 1024;
+}
+
+http {
+    include /etc/nginx/mime.types;
+    default_type application/octet-stream;
+
+    types {
+        text/css css;
+        text/javascript js;
+        application/javascript js;
+        application/json json;
+        image/jpeg jpg jpeg;
+        image/png png;
+        application/font-woff2 woff2;
+        application/font-woff woff;
+        application/x-font-ttf ttf;
+        font/opentype otf;
+        application/x-font-otf otf;
+        image/svg+xml svg svgz;
+        application/x-font-ttf ttf;
+    }
+
+    server {
+        listen 80;
+
+        root /home/savely/Documents/projects/hostings/books_hosting/frontend/build;
+
+        index index.html;
+
+        location /static/ {
+            alias /home/savely/Documents/projects/hostings/books_hosting/frontend/build/static/;
+            expires 30d;
+            add_header Cache-Control "public";
+        }
+
+        location /backend/ {
+            rewrite ^/backend/(.*)$ /$1 break;
+            proxy_pass http://localhost:3001;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+            proxy_http_version 1.1;
+            proxy_set_header Connection "";
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "upgrade";
+        }
+
+        location / {
+            try_files $uri /index.html;
+        }
+    }
+}
+Make sure to replace /home/savely/Documents/projects/hostings/books_hosting/frontend/build with the actual path to your build directory.
+
+Step 5: Start Nginx
+Start or reload the Nginx server to apply the new configuration:
+
+bash
+
+sudo service nginx start
+# or
+sudo service nginx reload
+Docker Compose Configuration
+Here is the docker-compose.yml file:
+
+yaml
+ 
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=development
+      - PG_HOST=postgres_db
+      - PG_PORT=5432
+      - PG_USER=${POSTGRES_USER}
+      - PG_PASS=${POSTGRES_PASSWORD}
+      - PG_NAME=${POSTGRES_DB}
+    depends_on:
+      - postgres_db
+
+  postgres_db:
+    image: postgres:13
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    ports:
+      - "5432:5432"
+
+volumes:
+  postgres_data:
+Notes
+Make sure to replace placeholders (e.g., POSTGRES_USER, POSTGRES_PASSWORD, POSTGRES_DB) with actual values.
+Ensure that the backend service in Docker Compose is configured to connect to the PostgreSQL container using the correct environment variables.
+Usage
+Once everything is set up, you can access the frontend by navigating to your server's address (e.g., http://yourdomain.com). The backend can be accessed through the /backend/ endpoint (e.g., http://yourdomain.com/backend/).
+
+Conclusion
+This project sets up an Nginx server to serve static files and proxy API requests to a backend running in Docker. The backend and PostgreSQL database are managed using Docker Compose. Follow the steps above to get started with the setup and configuration.
